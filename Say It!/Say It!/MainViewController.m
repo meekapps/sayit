@@ -37,9 +37,10 @@
   [super viewDidLoad];
     
   self.displayedAd = NO;
-    
-  [self.adView removeFromSuperview];
-    
+  
+  //Comment out for release.
+//  [self.adView removeFromSuperview];
+  
   [self.navigationController setNavigationBarHidden:YES];
   
   self.textView.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"text"];
