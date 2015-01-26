@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
@@ -22,10 +21,13 @@
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9j-fc-TsI">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="eoi-gt-eUQ"/>
+                        <outletCollection property="gestureRecognizers" destination="mfH-ex-adq" appends="YES" id="T6J-IB-NIt"/>
+                        <outletCollection property="gestureRecognizers" destination="YPa-c3-Sec" appends="YES" id="Kos-PA-DSs"/>
                     </connections>
                 </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bn-sA-k52" userLabel="Controls View">
@@ -60,13 +62,14 @@
                                 <action selector="sayIt:" destination="-1" eventType="touchUpInside" id="XBt-ZN-gYn"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VF5-6O-SYt">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VF5-6O-SYt">
                             <rect key="frame" x="10" y="17" width="34" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="SMR-L8-5E9"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                             <state key="normal" title="Clear">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -109,6 +112,16 @@
                 <constraint firstItem="g9j-fc-TsI" firstAttribute="top" secondItem="1" secondAttribute="top" id="wVE-7P-mpn"/>
             </constraints>
         </view>
+        <swipeGestureRecognizer direction="down" id="mfH-ex-adq">
+            <connections>
+                <action selector="swipeDownAction:" destination="-1" id="Izt-rH-YtF"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="up" id="YPa-c3-Sec">
+            <connections>
+                <action selector="swipeUpAction:" destination="-1" id="XO6-so-3RR"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
     <resources>
         <image name="speaker" width="40" height="39"/>

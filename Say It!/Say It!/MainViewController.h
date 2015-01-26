@@ -21,5 +21,7 @@
 
 - (IBAction)sayIt:(id)sender;
 - (IBAction)clearAction:(id)sender;
+- (IBAction)swipeUpAction:(id)sender;
+- (IBAction)swipeDownAction:(id)sender;
 
 @end

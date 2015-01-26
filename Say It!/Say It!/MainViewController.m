@@ -291,6 +291,14 @@
   [synthesizer speakUtterance:utterance];
 }
 
+- (IBAction)swipeUpAction:(id)sender {
+  [self.textView becomeFirstResponder];
+}
+
+- (IBAction)swipeDownAction:(id)sender {
+  [self.textView resignFirstResponder];
+}
+
 #pragma mark - Finishing Up
 
 - (void)didReceiveMemoryWarning {
