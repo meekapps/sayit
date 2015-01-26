@@ -42,7 +42,7 @@
                                                      self.settingsContainer.frame.size.height)
                              cornerRadius:self.settingsContainer.layer.cornerRadius].CGPath;
   self.startingPoint = point;
-  self.bottomSpaceConstraint.constant = point.y;
+  self.bottomSpaceConstraint.constant = self.startingPoint.y;
 
   return self;
 }
@@ -55,8 +55,8 @@
                       options:UIViewAnimationOptionCurveEaseInOut
                    animations:^{
                      self.layer.opacity = 1.0f;
-   self.settingsContainer.layer.opacity = 1.0f;
-   self.settingsContainer.layer.transform = CATransform3DIdentity;
+                     self.settingsContainer.layer.opacity = 1.0f;
+                     self.settingsContainer.layer.transform = CATransform3DIdentity;
   } completion:^(BOOL finished) {
   }];
 }

@@ -175,7 +175,7 @@
     
   //Set E-mail Fields
   NSString *bundleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-  NSString *bundleVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+  NSString *bundleVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
   NSString *deviceType = [UIDevice currentDevice].model;
 	
   NSString *subjectString = [NSString stringWithFormat:@"%@ (%@ - %@)", bundleName, bundleVersion, deviceType];
