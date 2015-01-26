@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,38 +11,41 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="99R-Yf-noG" userLabel="Tap Container">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99R-Yf-noG" userLabel="Tap Container">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="gSP-tQ-mlt" appends="YES" id="tff-jU-SFA"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" id="UFr-d4-4dM" userLabel="Settings Container">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFr-d4-4dM" userLabel="Settings Container">
                     <rect key="frame" x="10" y="305" width="300" height="152"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom-triangle" id="9Id-aK-NjM" userLabel="Triangle">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom-triangle" translatesAutoresizingMaskIntoConstraints="NO" id="9Id-aK-NjM" userLabel="Triangle">
                             <rect key="frame" x="257" y="152" width="35" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="INQ-ME-nP3"/>
+                                <constraint firstAttribute="width" constant="35" id="bYf-ac-FaG"/>
+                            </constraints>
                         </imageView>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="awq-cO-v7l">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="awq-cO-v7l">
                             <rect key="frame" x="10" y="10" width="280" height="132"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <view key="tableFooterView" contentMode="scaleToFill" id="5mX-FJ-s3n">
                                 <rect key="frame" x="0.0" y="88" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LJo-kg-7Zh" userLabel="Contact Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJo-kg-7Zh" userLabel="Contact Button">
                                         <rect key="frame" x="76" y="7" width="129" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7T9-Ry-Mko"/>
+                                            <constraint firstAttribute="width" constant="129" id="ZrM-PY-c64"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Contact Developer">
                                             <color key="titleColor" red="0.29411764709999999" green="0.6705882353" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="contactDeveloper:" destination="Xcb-ay-dLQ" eventType="touchUpInside" id="wr4-O8-CuP"/>
@@ -49,6 +53,10 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="LJo-kg-7Zh" secondAttribute="bottom" constant="7" id="IP2-xX-ba5"/>
+                                    <constraint firstAttribute="centerX" secondItem="LJo-kg-7Zh" secondAttribute="centerX" id="kQS-0V-KnR"/>
+                                </constraints>
                             </view>
                             <connections>
                                 <outlet property="dataSource" destination="Xcb-ay-dLQ" id="vc0-DK-5pA"/>
@@ -57,11 +65,29 @@
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="awq-cO-v7l" firstAttribute="centerY" secondItem="UFr-d4-4dM" secondAttribute="centerY" id="04J-MV-VwM"/>
+                        <constraint firstAttribute="width" constant="300" id="8bv-YJ-piH"/>
+                        <constraint firstItem="awq-cO-v7l" firstAttribute="leading" secondItem="UFr-d4-4dM" secondAttribute="leading" constant="10" id="IwA-se-dOi"/>
+                        <constraint firstAttribute="trailing" secondItem="9Id-aK-NjM" secondAttribute="trailing" constant="8" id="JdN-y2-Uy7"/>
+                        <constraint firstItem="9Id-aK-NjM" firstAttribute="top" secondItem="awq-cO-v7l" secondAttribute="bottom" constant="10" id="RDv-is-V4Y"/>
+                        <constraint firstItem="awq-cO-v7l" firstAttribute="top" secondItem="UFr-d4-4dM" secondAttribute="top" constant="10" id="U7p-dQ-jpg"/>
+                        <constraint firstAttribute="height" constant="152" id="V6B-fO-hnx"/>
+                        <constraint firstAttribute="trailing" secondItem="awq-cO-v7l" secondAttribute="trailing" constant="10" id="f9P-s2-JlU"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
             <gestureRecognizers/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="99R-Yf-noG" secondAttribute="bottom" id="5Z7-mw-Qj2"/>
+                <constraint firstAttribute="trailing" secondItem="99R-Yf-noG" secondAttribute="trailing" id="AM0-4F-562"/>
+                <constraint firstAttribute="trailing" secondItem="UFr-d4-4dM" secondAttribute="trailing" constant="10" id="KNZ-hF-JKQ"/>
+                <constraint firstItem="99R-Yf-noG" firstAttribute="leading" secondItem="Xcb-ay-dLQ" secondAttribute="leading" id="PPx-gI-Zif"/>
+                <constraint firstAttribute="bottom" secondItem="UFr-d4-4dM" secondAttribute="bottom" constant="111" id="a2S-AO-cE6"/>
+                <constraint firstItem="99R-Yf-noG" firstAttribute="top" secondItem="Xcb-ay-dLQ" secondAttribute="top" id="j0u-Hf-goC"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="settingsContainer" destination="UFr-d4-4dM" id="48y-Q5-Igl"/>
                 <outlet property="tableView" destination="awq-cO-v7l" id="mk4-rQ-DvK"/>
@@ -76,4 +102,9 @@
     <resources>
         <image name="bottom-triangle" width="35" height="20"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

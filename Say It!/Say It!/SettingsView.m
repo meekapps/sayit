@@ -20,7 +20,8 @@
 
 - (id) initFromPoint:(CGPoint)point {
     self = [[[NSBundle mainBundle]loadNibNamed:@"SettingsView" owner:self options:nil] objectAtIndex:0];
-    
+  self.frame = CGRectMake(0.0F, 0.0F, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+  
     self.layer.opacity = 0.0f;
     self.settingsContainer.layer.transform = CATransform3DMakeScale(0.01f, 0.01f, 1.0f);
     self.settingsContainer.layer.opacity = 0.0f;
@@ -31,23 +32,34 @@
     self.settingsContainer.layer.shadowRadius = 2.0f;
     self.settingsContainer.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.0f, 0.0f, self.settingsContainer.frame.size.width, self.settingsContainer.frame.size.height) cornerRadius:self.settingsContainer.layer.cornerRadius].CGPath;
     self.startingPoint = point;
-    self.settingsContainer.layer.position = CGPointMake(self.layer.position.x + 152.0f, self.startingPoint.y - self.settingsContainer.frame.size.height + 20.0f);
+//    self.settingsContainer.layer.position = CGPointMake(self.layer.position.x + 152.0f, self.startingPoint.y - self.settingsContainer.frame.size.height + 20.0f);
+//  self.settingsContainer.layer.position = point;
+  NSLog(@"point: %@", NSStringFromCGPoint(point));
 
     return self;
 }
 
 - (void) show {
-    [UIView animateWithDuration:0.5f animations:^{
-        self.layer.opacity = 1.0f;
-    } completion:^(BOOL finished) {
-    }];
-    
-    [UIView animateWithDuration:0.3f animations:^{
-        self.settingsContainer.layer.opacity = 1.0f;
-        self.settingsContainer.layer.transform = CATransform3DIdentity;
-        self.settingsContainer.layer.position = CGPointMake(self.layer.position.x, self.startingPoint.y - self.settingsContainer.frame.size.height + 20.0f);
-    } completion:^(BOOL finished) {
-    }];
+//    [UIView animateWithDuration:0.5f animations:^{
+//        self.layer.opacity = 1.0f;
+//    } completion:^(BOOL finished) {
+//    }];
+  
+  
+  [UIView animateWithDuration:0.5f
+                        delay:0.0f
+       usingSpringWithDamping:0.8f
+        initialSpringVelocity:0.0f
+                      options:UIViewAnimationOptionCurveEaseInOut
+                   animations:^{
+                     self.layer.opacity = 1.0f;
+   self.settingsContainer.layer.opacity = 1.0f;
+   self.settingsContainer.layer.transform = CATransform3DIdentity;
+   //        self.settingsContainer.layer.position = CGPointMake(self.layer.position.x, self.startingPoint.y - self.settingsContainer.frame.size.height + 20.0f);
+   //      self.settingsContainer.layer.position = CGPointMake(0.0F, 0.0F);animations:^{
+   
+  } completion:^(BOOL finished) {
+  }];
 }
 
 - (void) hide {

@@ -11,16 +11,25 @@
 #import "UIView+Genie.h"
 
 @interface MainViewController ()
-
+@property (nonatomic) CGFloat defaultControlsHeight;
 @end
 
 @implementation MainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
     }
     return self;
+}
+
+- (void) viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
+  
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    self.defaultControlsHeight = self.controlsHeightConstraint.constant;
+  });
 }
 
 - (void)viewDidLoad {
@@ -32,13 +41,13 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     
-    self.textView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+    //self.textView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
     self.textView.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"text"];
     
     self.adView.frame = CGRectMake(self.adView.frame.size.width, 20.0f, self.adView.frame.size.width, self.adView.frame.size.height);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
-    
+  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
 }
 
@@ -57,30 +66,20 @@
     UIViewAnimationCurve animationCurve = curveValue.intValue;
     
     // Create animation.
-    CGRect controlsViewFrame = self.controlsView.frame;
-    controlsViewFrame.origin.y -= keyboardEndFrame.size.height;
-    
+    self.controlsHeightConstraint.constant = keyboardEndFrame.size.height + 64.0F;
+    [self.controlsView setNeedsLayout];
     // Begin animation.
-    
     [UIView animateWithDuration:animationDuration
                           delay:0.0
                         options:(animationCurve << 16)
                      animations:^{
-                         self.controlsView.frame = controlsViewFrame;
-                         CGRect textViewFrame = self.textView.frame;
-                         textViewFrame.size.height -= keyboardEndFrame.size.height;
-                         self.textView.frame = textViewFrame;
-                     }
-                     completion:NULL];
+                        [self.controlsView layoutIfNeeded];
+//                        [self.textView layoutIfNeeded];
+                     } completion:^(BOOL finished) {}];
 }
 
 - (void) handleHideKeyboard:(NSNotification*)notification {
     NSDictionary *userInfo = notification.userInfo;
-    
-    // Get keyboard size.
-    
-    NSValue *endFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey];
-    CGRect keyboardEndFrame = [self.view convertRect:endFrameValue.CGRectValue fromView:nil];
     
     // Get keyboard animation.
     NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
@@ -90,19 +89,14 @@
     UIViewAnimationCurve animationCurve = curveValue.intValue;
     
     // Create animation.
-    CGRect controlsViewFrame = self.controlsView.frame;
-    controlsViewFrame.origin.y += keyboardEndFrame.size.height;
-    
+    self.controlsHeightConstraint.constant = 64.0f;
+  
     [UIView animateWithDuration:animationDuration
                           delay:0.0
                         options:(animationCurve << 16)
                      animations:^{
-                         self.controlsView.frame = controlsViewFrame;
-                         CGRect textViewFrame = self.textView.frame;
-                         textViewFrame.size.height += keyboardEndFrame.size.height;
-                         self.textView.frame = textViewFrame;
-                     }
-                     completion:NULL];
+                        [self.controlsView layoutIfNeeded];
+                     } completion:^(BOOL finished) {}];
 }
 
 #pragma mark - AdView
@@ -228,7 +222,6 @@
 }
 
 - (IBAction)showSettings:(UIButton*)settingsButton {
-    
     CGPoint settingsPoint = settingsButton.center;
     CGPoint convertedPoint = [settingsButton convertPoint:settingsPoint toView:self.view];
     
