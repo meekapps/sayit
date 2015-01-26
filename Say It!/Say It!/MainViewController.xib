@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="adView" destination="xfe-S3-UMz" id="vdI-gC-iZ7"/>
+                <outlet property="controlsHeightConstraint" destination="T54-43-Jhe" id="uur-cf-I4S"/>
                 <outlet property="controlsView" destination="5bn-sA-k52" id="Ubp-HU-uqR"/>
                 <outlet property="textView" destination="g9j-fc-TsI" id="INJ-et-Ngn"/>
+                <outlet property="textViewTopConstraint" destination="kAt-CC-hJb" id="Bze-0v-w04"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -17,28 +19,26 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="g9j-fc-TsI">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9j-fc-TsI">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-                    <autoresizingMask key="autoresizingMask"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="eoi-gt-eUQ"/>
+                        <outletCollection property="gestureRecognizers" destination="mfH-ex-adq" appends="YES" id="T6J-IB-NIt"/>
+                        <outletCollection property="gestureRecognizers" destination="YPa-c3-Sec" appends="YES" id="Kos-PA-DSs"/>
                     </connections>
                 </textView>
-                <view contentMode="scaleToFill" id="ttA-lb-Rae" userLabel="Status BG">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" id="5bn-sA-k52" userLabel="Controls View">
-                    <rect key="frame" x="0.0" y="504" width="320" height="280"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bn-sA-k52" userLabel="Controls View">
+                    <rect key="frame" x="0.0" y="504" width="320" height="64"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="drr-O2-XVB" userLabel="Settings Button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drr-O2-XVB" userLabel="Settings Button">
                             <rect key="frame" x="257" y="17" width="53" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Dci-3a-gv2"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                             <state key="normal" title="Settings">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,23 +48,27 @@
                                 <action selector="showSettings:" destination="-1" eventType="touchUpInside" id="2I5-id-Xav"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5hZ-zg-yKg" userLabel="Say It Button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hZ-zg-yKg" userLabel="Say It Button">
                             <rect key="frame" x="100" y="12" width="120" height="39"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="Psb-os-MDY"/>
+                                <constraint firstAttribute="height" constant="39" id="oy6-aQ-Ma1"/>
+                            </constraints>
                             <state key="normal" image="speaker">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="sayIt:" destination="-1" eventType="touchUpInside" id="XBt-ZN-gYn"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VF5-6O-SYt">
-                            <rect key="frame" x="10" y="17" width="37" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VF5-6O-SYt">
+                            <rect key="frame" x="10" y="17" width="34" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="SMR-L8-5E9"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                             <state key="normal" title="Clear">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -73,22 +77,57 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.29411764705882354" green="0.6705882352941176" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <constraints>
+                        <constraint firstItem="drr-O2-XVB" firstAttribute="top" secondItem="5bn-sA-k52" secondAttribute="top" constant="17" id="LLz-jf-PUd"/>
+                        <constraint firstAttribute="centerX" secondItem="5hZ-zg-yKg" secondAttribute="centerX" id="M9X-eO-bQh"/>
+                        <constraint firstItem="VF5-6O-SYt" firstAttribute="leading" secondItem="5bn-sA-k52" secondAttribute="leading" constant="10" id="QqP-qc-3SV"/>
+                        <constraint firstAttribute="height" constant="64" id="T54-43-Jhe"/>
+                        <constraint firstItem="5hZ-zg-yKg" firstAttribute="top" secondItem="5bn-sA-k52" secondAttribute="top" constant="12" id="bZ3-YU-PnT"/>
+                        <constraint firstItem="VF5-6O-SYt" firstAttribute="top" secondItem="5bn-sA-k52" secondAttribute="top" constant="17" id="u0p-v2-dmX"/>
+                        <constraint firstAttribute="trailing" secondItem="drr-O2-XVB" secondAttribute="trailing" constant="10" id="ztx-0U-IY8"/>
+                    </constraints>
                 </view>
-                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xfe-S3-UMz">
+                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="xfe-S3-UMz">
                     <rect key="frame" x="0.0" y="20" width="320" height="50"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="MHK-C1-0cz"/>
+                    </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Rdn-0f-tBc"/>
                     </connections>
                 </adBannerView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="g9j-fc-TsI" secondAttribute="trailing" id="0sg-PH-6g1"/>
+                <constraint firstItem="5bn-sA-k52" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="AJE-fL-Feh"/>
+                <constraint firstAttribute="trailing" secondItem="xfe-S3-UMz" secondAttribute="trailing" id="EPL-8T-HKa"/>
+                <constraint firstAttribute="bottom" secondItem="5bn-sA-k52" secondAttribute="bottom" id="FMv-q8-Stm"/>
+                <constraint firstAttribute="trailing" secondItem="5bn-sA-k52" secondAttribute="trailing" id="GWN-zl-Fhu"/>
+                <constraint firstItem="5bn-sA-k52" firstAttribute="top" secondItem="g9j-fc-TsI" secondAttribute="bottom" id="Hha-uX-aE1"/>
+                <constraint firstItem="xfe-S3-UMz" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="R7A-88-EU8"/>
+                <constraint firstItem="xfe-S3-UMz" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="WGm-oQ-a6O"/>
+                <constraint firstItem="g9j-fc-TsI" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="dG2-yl-Q3Q"/>
+                <constraint firstItem="g9j-fc-TsI" firstAttribute="top" secondItem="1" secondAttribute="top" id="kAt-CC-hJb"/>
+            </constraints>
         </view>
+        <swipeGestureRecognizer direction="down" id="mfH-ex-adq">
+            <connections>
+                <action selector="swipeDownAction:" destination="-1" id="Izt-rH-YtF"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="up" id="YPa-c3-Sec">
+            <connections>
+                <action selector="swipeUpAction:" destination="-1" id="XO6-so-3RR"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
     <resources>
         <image name="speaker" width="40" height="39"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
