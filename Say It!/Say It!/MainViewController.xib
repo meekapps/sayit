@@ -28,13 +28,6 @@
                         <outlet property="delegate" destination="-1" id="eoi-gt-eUQ"/>
                     </connections>
                 </textView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttA-lb-Rae" userLabel="Status BG">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="5sK-Vb-x9j"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bn-sA-k52" userLabel="Controls View">
                     <rect key="frame" x="0.0" y="504" width="320" height="64"/>
                     <subviews>
@@ -104,13 +97,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ttA-lb-Rae" firstAttribute="top" secondItem="1" secondAttribute="top" id="0Ts-7G-6qs"/>
                 <constraint firstAttribute="trailing" secondItem="g9j-fc-TsI" secondAttribute="trailing" id="0sg-PH-6g1"/>
                 <constraint firstItem="5bn-sA-k52" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="AJE-fL-Feh"/>
                 <constraint firstAttribute="trailing" secondItem="xfe-S3-UMz" secondAttribute="trailing" id="EPL-8T-HKa"/>
-                <constraint firstAttribute="trailing" secondItem="ttA-lb-Rae" secondAttribute="trailing" id="Erg-lY-Wkc"/>
                 <constraint firstAttribute="bottom" secondItem="5bn-sA-k52" secondAttribute="bottom" id="FMv-q8-Stm"/>
-                <constraint firstItem="ttA-lb-Rae" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="G8t-6H-Wr0"/>
                 <constraint firstAttribute="trailing" secondItem="5bn-sA-k52" secondAttribute="trailing" id="GWN-zl-Fhu"/>
                 <constraint firstItem="5bn-sA-k52" firstAttribute="top" secondItem="g9j-fc-TsI" secondAttribute="bottom" id="Hha-uX-aE1"/>
                 <constraint firstItem="xfe-S3-UMz" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="R7A-88-EU8"/>

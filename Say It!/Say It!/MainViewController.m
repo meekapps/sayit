@@ -41,8 +41,7 @@
   [self.adView removeFromSuperview];
     
   [self.navigationController setNavigationBarHidden:YES];
-    
-  //self.textView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+  
   self.textView.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"text"];
     
   self.adView.frame = CGRectMake(self.adView.frame.size.width,
@@ -219,11 +218,15 @@
   if ([self.textView.text isEqualToString:@""]) return;
   CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
   UITextView *dummyTextView = [[UITextView alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x,
-                                                                           self.textView.frame.origin.y + statusBarHeight,
+                                                                           self.textView.frame.origin.y,
                                                                            self.textView.frame.size.width,
-                                                                           self.textView.frame.size.height - statusBarHeight)];
+                                                                           self.textView.frame.size.height)];
   dummyTextView.text = self.textView.text;
   dummyTextView.font = self.textView.font;
+  dummyTextView.textContainerInset = UIEdgeInsetsMake(statusBarHeight + 8.0f,
+                                                      0.0f,
+                                                      0.0f,
+                                                      0.0f);
   dummyTextView.textColor = self.textView.textColor;
   dummyTextView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.1f];
   dummyTextView.layer.opacity = 0.0f;
@@ -251,7 +254,6 @@
                                                   destinationEdge:BCRectEdgeTop
                                                        completion:^{
                                                          [dummyTextView removeFromSuperview];
-                             
                                                        }];
                    }];
 
