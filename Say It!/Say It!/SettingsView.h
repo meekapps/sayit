@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *settingsContainer;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpaceConstraint;
 @property (nonatomic) CGPoint startingPoint;
 
 @property (unsafe_unretained, nonatomic) id <SettingsViewDelegate> delegate;

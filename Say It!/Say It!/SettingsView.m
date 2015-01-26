@@ -26,18 +26,23 @@
                           [UIScreen mainScreen].bounds.size.height);
   
   self.layer.opacity = 0.0f;
-  self.settingsContainer.layer.transform = CATransform3DMakeScale(0.01f, 0.01f, 1.0f);
+  self.settingsContainer.layer.transform = CATransform3DMakeScale(0.01f,
+                                                                  0.01f,
+                                                                  1.0f);
   self.settingsContainer.layer.opacity = 0.0f;
   self.settingsContainer.layer.cornerRadius = 8.0f;
   self.settingsContainer.layer.shadowColor = [UIColor blackColor].CGColor;
   self.settingsContainer.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
   self.settingsContainer.layer.shadowOpacity = 0.2f;
   self.settingsContainer.layer.shadowRadius = 2.0f;
-  self.settingsContainer.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.0f, 0.0f, self.settingsContainer.frame.size.width, self.settingsContainer.frame.size.height) cornerRadius:self.settingsContainer.layer.cornerRadius].CGPath;
+  self.settingsContainer.layer.shadowPath =
+  [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.0f,
+                                                     0.0f,
+                                                     self.settingsContainer.frame.size.width,
+                                                     self.settingsContainer.frame.size.height)
+                             cornerRadius:self.settingsContainer.layer.cornerRadius].CGPath;
   self.startingPoint = point;
-//    self.settingsContainer.layer.position = CGPointMake(self.layer.position.x + 152.0f, self.startingPoint.y - self.settingsContainer.frame.size.height + 20.0f);
-//  self.settingsContainer.layer.position = point;
-  NSLog(@"point: %@", NSStringFromCGPoint(point));
+  self.bottomSpaceConstraint.constant = point.y;
 
   return self;
 }
@@ -52,9 +57,6 @@
                      self.layer.opacity = 1.0f;
    self.settingsContainer.layer.opacity = 1.0f;
    self.settingsContainer.layer.transform = CATransform3DIdentity;
-   //        self.settingsContainer.layer.position = CGPointMake(self.layer.position.x, self.startingPoint.y - self.settingsContainer.frame.size.height + 20.0f);
-   //      self.settingsContainer.layer.position = CGPointMake(0.0F, 0.0F);animations:^{
-   
   } completion:^(BOOL finished) {
   }];
 }

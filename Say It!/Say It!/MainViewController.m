@@ -258,11 +258,10 @@
 }
 
 - (IBAction)showSettings:(UIButton*)settingsButton {
-  CGPoint settingsPoint = settingsButton.center;
-  CGPoint convertedPoint = [settingsButton convertPoint:settingsPoint
-                                                 toView:self.view];
+  CGFloat settingsY = self.controlsHeightConstraint.constant + 10.0f;
+  CGPoint settingsPoint = CGPointMake(settingsButton.frame.origin.x, settingsY);
     
-  SettingsView *settingsView = [[SettingsView alloc] initFromPoint:convertedPoint];
+  SettingsView *settingsView = [[SettingsView alloc] initFromPoint:settingsPoint];
   settingsView.delegate = self;
   [self.view addSubview:settingsView];
   [settingsView show];

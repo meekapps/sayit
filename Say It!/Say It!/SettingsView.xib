@@ -20,7 +20,7 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFr-d4-4dM" userLabel="Settings Container">
-                    <rect key="frame" x="10" y="305" width="300" height="152"/>
+                    <rect key="frame" x="10" y="342" width="300" height="152"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom-triangle" translatesAutoresizingMaskIntoConstraints="NO" id="9Id-aK-NjM" userLabel="Triangle">
                             <rect key="frame" x="257" y="152" width="35" height="20"/>
@@ -84,11 +84,12 @@
                 <constraint firstAttribute="trailing" secondItem="99R-Yf-noG" secondAttribute="trailing" id="AM0-4F-562"/>
                 <constraint firstAttribute="trailing" secondItem="UFr-d4-4dM" secondAttribute="trailing" constant="10" id="KNZ-hF-JKQ"/>
                 <constraint firstItem="99R-Yf-noG" firstAttribute="leading" secondItem="Xcb-ay-dLQ" secondAttribute="leading" id="PPx-gI-Zif"/>
-                <constraint firstAttribute="bottom" secondItem="UFr-d4-4dM" secondAttribute="bottom" constant="111" id="a2S-AO-cE6"/>
+                <constraint firstAttribute="bottom" secondItem="UFr-d4-4dM" secondAttribute="bottom" constant="74" id="a2S-AO-cE6"/>
                 <constraint firstItem="99R-Yf-noG" firstAttribute="top" secondItem="Xcb-ay-dLQ" secondAttribute="top" id="j0u-Hf-goC"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
+                <outlet property="bottomSpaceConstraint" destination="a2S-AO-cE6" id="I3N-95-8cV"/>
                 <outlet property="settingsContainer" destination="UFr-d4-4dM" id="48y-Q5-Igl"/>
                 <outlet property="tableView" destination="awq-cO-v7l" id="mk4-rQ-DvK"/>
             </connections>
