@@ -40,15 +40,11 @@
   
   //Comment out for release.
 //  [self.adView removeFromSuperview];
+  self.adView.layer.opacity = 0.0f;
   
   [self.navigationController setNavigationBarHidden:YES];
   
   self.textView.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"text"];
-    
-  self.adView.frame = CGRectMake(self.adView.frame.size.width,
-                                 [UIApplication sharedApplication].statusBarFrame.size.height,
-                                 self.adView.frame.size.width,
-                                 self.adView.frame.size.height);
     
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(handleShowKeyboard:)
@@ -117,24 +113,13 @@
   if (self.displayedAd == NO) {
     self.displayedAd = YES;
     
-    // Divider Line
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0.0f,
-                                                                self.adView.frame.size.height - 0.5f,
-                                                                self.adView.frame.size.width,
-                                                                0.5f)];
-    lineView.backgroundColor = [UIColor lightGrayColor];
-    [self.adView addSubview:lineView];
-        
+    self.textViewTopConstraint.constant = banner.bounds.size.height;
+    [self.textView setNeedsLayout];
+    
     [UIView animateWithDuration:0.25f
                      animations:^{
-                       self.textView.frame = CGRectMake(0.0f,
-                                                        self.adView.frame.size.height,
-                                                        self.textView.frame.size.width,
-                                                        self.textView.frame.size.height - self.adView.frame.size.height);
-                       self.adView.frame = CGRectMake(0.0f,
-                                                      self.adView.frame.origin.y,
-                                                      self.adView.frame.size.width,
-                                                      self.adView.frame.size.height);
+                       self.adView.layer.opacity = 1.0f;
+                       [self.textView layoutIfNeeded];
                      }];
     }
 }
@@ -149,18 +134,15 @@
 
 - (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
   NSLog(@"banner view failed");
-    
+  
+  self.adView.layer.opacity = 0.0f;
+  
+  self.textViewTopConstraint.constant = 0.0f;
+  [self.textView setNeedsLayout];
   if (self.displayedAd) {
     [UIView animateWithDuration:0.25f
                      animations:^{
-                       self.textView.frame = CGRectMake(0.0f,
-                                                        0.0f,
-                                                        self.textView.frame.size.width,
-                                                        self.textView.frame.size.height + self.adView.frame.size.height);
-                       self.adView.frame = CGRectMake(self.adView.frame.size.width,
-                                                      self.adView.frame.origin.y,
-                                                      self.adView.frame.size.width,
-                                                      self.adView.frame.size.height);
+                       [self.textView layoutIfNeeded];
                      }];
         
     self.displayedAd = NO;
@@ -232,7 +214,7 @@
   dummyTextView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.1f];
   dummyTextView.layer.opacity = 0.0f;
     
-  [self.view addSubview:dummyTextView];
+  [self.view insertSubview:dummyTextView belowSubview:self.adView];
     
   [UIView animateWithDuration:0.15f
                    animations:^{

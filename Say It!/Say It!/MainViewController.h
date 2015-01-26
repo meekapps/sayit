@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIView *controlsView;
 @property (weak, nonatomic) IBOutlet ADBannerView *adView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *controlsHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *controlsHeightConstraint, *textViewTopConstraint;
 @property (nonatomic) BOOL displayedAd;
 
 - (IBAction)sayIt:(id)sender;

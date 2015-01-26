@@ -10,6 +10,7 @@
                 <outlet property="controlsHeightConstraint" destination="T54-43-Jhe" id="uur-cf-I4S"/>
                 <outlet property="controlsView" destination="5bn-sA-k52" id="Ubp-HU-uqR"/>
                 <outlet property="textView" destination="g9j-fc-TsI" id="INJ-et-Ngn"/>
+                <outlet property="textViewTopConstraint" destination="kAt-CC-hJb" id="Bze-0v-w04"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -53,10 +54,8 @@
                                 <constraint firstAttribute="width" constant="120" id="Psb-os-MDY"/>
                                 <constraint firstAttribute="height" constant="39" id="oy6-aQ-Ma1"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
                             <state key="normal" image="speaker">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="sayIt:" destination="-1" eventType="touchUpInside" id="XBt-ZN-gYn"/>
@@ -109,7 +108,7 @@
                 <constraint firstItem="xfe-S3-UMz" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="R7A-88-EU8"/>
                 <constraint firstItem="xfe-S3-UMz" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="WGm-oQ-a6O"/>
                 <constraint firstItem="g9j-fc-TsI" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="dG2-yl-Q3Q"/>
-                <constraint firstItem="g9j-fc-TsI" firstAttribute="top" secondItem="1" secondAttribute="top" id="wVE-7P-mpn"/>
+                <constraint firstItem="g9j-fc-TsI" firstAttribute="top" secondItem="1" secondAttribute="top" id="kAt-CC-hJb"/>
             </constraints>
         </view>
         <swipeGestureRecognizer direction="down" id="mfH-ex-adq">
